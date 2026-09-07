@@ -1,4 +1,4 @@
-
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -248,12 +248,16 @@ header{
   line-height:1
 }
 
+/* BUG #5 FIX:
+   Keep both card rows aligned consistently */
 .mini{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:15px;
-  padding:13px;
+  width:100%;
+  min-height:48px;
+  padding:13px 15px;
   border-radius:14px;
   background:var(--cream);
   margin-top:10px;
@@ -262,12 +266,16 @@ header{
 }
 
 .mini span:first-child{
-  text-align:left
+  text-align:left;
+  flex:1;
+  min-width:0
 }
 
 .mini span:last-child{
   color:var(--green);
-  white-space:nowrap
+  white-space:nowrap;
+  flex-shrink:0;
+  text-align:right
 }
 
 section{
@@ -615,7 +623,6 @@ footer{
 }
 
 
-
 @media(max-width:850px){
 
   .links{
@@ -633,11 +640,6 @@ footer{
     z-index:100
   }
 
-  /*
-    FIX 1:
-    Mobile menu is controlled using a class instead
-    of repeatedly changing inline styles with JavaScript.
-  */
   .links.open{
     display:flex
   }
@@ -704,8 +706,31 @@ footer{
     min-height:310px
   }
 
+  /* BUG #5 FIX:
+     Keep the Today’s Pickup card stable on small screens */
   .laundry-card{
-    inset:38px 16px 18px
+    inset:38px 16px 18px;
+    padding:20px;
+    overflow:hidden
+  }
+
+  /* BUG #5 FIX:
+     Same width, height and spacing for both rows */
+  .mini{
+    width:100%;
+    min-height:48px;
+    padding:12px 14px;
+    gap:12px
+  }
+
+  .mini span:first-child{
+    flex:1;
+    min-width:0
+  }
+
+  .mini span:last-child{
+    flex-shrink:0;
+    white-space:nowrap
   }
 
   .shirt{
@@ -1920,7 +1945,6 @@ menuButton.addEventListener('click', function(event){
 });
 
 
-
 const navLinks = document.querySelectorAll('.links a');
 
 navLinks.forEach(function(link){
@@ -1933,10 +1957,6 @@ navLinks.forEach(function(link){
 
 });
 
-
-/*
-  Close menu when clicking outside it.
-*/
 
 document.addEventListener('click', function(event){
 
@@ -1964,8 +1984,6 @@ document.addEventListener('keydown', function(event){
 });
 
 
-
-
 window.addEventListener('resize', function(){
 
   if(window.innerWidth > 850){
@@ -1975,7 +1993,6 @@ window.addEventListener('resize', function(){
   }
 
 });
-
 
 
 const d = document.getElementById('date');
@@ -2003,7 +2020,6 @@ function setMinimumDate(){
 setMinimumDate();
 
 
-
 const nameInput =
   document.getElementById('name');
 
@@ -2012,8 +2028,6 @@ const nameField =
 
 
 nameInput.addEventListener('input',function(){
-
-  
 
   this.value =
     this.value.replace(
@@ -2052,7 +2066,6 @@ nameInput.addEventListener('blur',function(){
 });
 
 
- 
 const phoneInput =
   document.getElementById('phone');
 
@@ -2096,13 +2109,11 @@ phoneInput.addEventListener('blur',function(){
 });
 
 
-
 document
   .getElementById('bookingForm')
   .addEventListener('submit',function(e){
 
     e.preventDefault();
-
 
 
     const name =
@@ -2126,6 +2137,7 @@ document
 
     }
 
+
     const phone =
       phoneInput.value.trim();
 
@@ -2146,7 +2158,6 @@ document
       phoneField.classList.remove('invalid');
 
     }
-
 
 
     const data =
@@ -2172,8 +2183,6 @@ document
       `Demo booking confirmed! Reference: ${ref}. We'll contact ${data.get('phone')} to confirm the pickup.`;
 
 
-    
-
     this.reset();
 
 
@@ -2190,4 +2199,4 @@ document
 
 </body>
 </html>
-
+```
