@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -26,9 +27,13 @@
   --radius:20px
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box
+}
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth
+}
 
 body{
   margin:0;
@@ -61,7 +66,8 @@ header{
   height:76px;
   display:flex;
   align-items:center;
-  justify-content:space-between
+  justify-content:space-between;
+  position:relative
 }
 
 .logo{
@@ -70,7 +76,8 @@ header{
   gap:10px;
   font-weight:850;
   font-size:22px;
-  color:var(--navy)
+  color:var(--navy);
+  flex-shrink:0
 }
 
 .logo-mark{
@@ -81,7 +88,8 @@ header{
   display:grid;
   place-items:center;
   color:white;
-  font-size:20px
+  font-size:20px;
+  flex-shrink:0
 }
 
 .links{
@@ -89,6 +97,10 @@ header{
   gap:26px;
   font-weight:650;
   font-size:14px
+}
+
+.links a{
+  transition:color .2s ease
 }
 
 .links a:hover{
@@ -141,7 +153,10 @@ header{
   border:0;
   background:none;
   font-size:26px;
-  cursor:pointer
+  cursor:pointer;
+  color:var(--navy);
+  padding:5px;
+  line-height:1
 }
 
 .hero{
@@ -214,7 +229,7 @@ header{
   inset:55px 28px 28px;
   box-shadow:0 25px 60px rgba(16,36,62,.13);
   display:flex;
-  flex-direction:column;
+  flex-direction:column
 }
 
 .pickup-title{
@@ -468,6 +483,7 @@ section{
 }
 
 /* FORM */
+
 .form-wrap{
   display:grid;
   grid-template-columns:.8fr 1.2fr;
@@ -598,11 +614,35 @@ footer{
   font-size:12px
 }
 
-/* RESPONSIVE */
+
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media(max-width:850px){
 
   .links{
-    display:none
+    display:none;
+    position:absolute;
+    top:76px;
+    left:0;
+    right:0;
+    background:#fff;
+    padding:20px;
+    flex-direction:column;
+    gap:18px;
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+    border-top:1px solid var(--line);
+    z-index:100
+  }
+
+  /*
+    FIX 1:
+    Mobile menu is controlled using a class instead
+    of repeatedly changing inline styles with JavaScript.
+  */
+  .links.open{
+    display:flex
   }
 
   .menu{
@@ -689,6 +729,7 @@ footer{
 <body>
 
 <header>
+
 <div class="container nav">
 
 <a class="logo" href="#home">
@@ -697,24 +738,44 @@ footer{
 </a>
 
 <nav class="links">
+
   <a href="#home">Home</a>
+
   <a href="#services">Services</a>
+
   <a href="#pricing">Pricing</a>
+
   <a href="#how">How It Works</a>
+
   <a href="#about">About</a>
+
   <a href="#faq">FAQ</a>
+
   <a href="#contact">Contact</a>
+
 </nav>
 
-<a class="btn btn-primary" href="#booking">Book a Pickup</a>
+<a class="btn btn-primary" href="#booking">
+  Book a Pickup
+</a>
 
-<button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+<button
+  class="menu"
+  id="menuButton"
+  aria-label="Open menu"
+  aria-expanded="false"
+  type="button"
+>
+  ☰
+</button>
 
 </div>
+
 </header>
 
 
 <main id="home">
+
 
 <section class="hero">
 
@@ -722,7 +783,9 @@ footer{
 
 <div>
 
-<span class="eyebrow">🚚 Doorstep Pickup & Delivery</span>
+<span class="eyebrow">
+  🚚 Doorstep Pickup & Delivery
+</span>
 
 <h1>
 Fresh Clothes.<br>
@@ -734,14 +797,25 @@ Professional laundry, dry cleaning and ironing — collected from your doorstep 
 </p>
 
 <div class="actions">
-<a class="btn btn-primary" href="#booking">Book a Pickup →</a>
-<a class="btn btn-light" href="#services">Explore Services</a>
+
+<a class="btn btn-primary" href="#booking">
+  Book a Pickup →
+</a>
+
+<a class="btn btn-light" href="#services">
+  Explore Services
+</a>
+
 </div>
 
 <div class="trust">
+
 <span>✓ Hygienic Cleaning</span>
+
 <span>✓ Transparent Pricing</span>
+
 <span>✓ On-Time Delivery</span>
+
 </div>
 
 </div>
@@ -752,26 +826,43 @@ Professional laundry, dry cleaning and ironing — collected from your doorstep 
 <div class="laundry-card">
 
 <div class="pickup-title">
-TODAY'S PICKUP
+  TODAY'S PICKUP
 </div>
 
-<div class="shirt">👕</div>
-
-<div class="mini">
-<span>Wash & Iron</span>
-<span>₹109/kg</span>
+<div class="shirt">
+  👕
 </div>
 
 <div class="mini">
-<span>Ready for delivery</span>
-<span>✓</span>
+
+<span>
+  Wash & Iron
+</span>
+
+<span>
+  ₹109/kg
+</span>
+
 </div>
+
+<div class="mini">
+
+<span>
+  Ready for delivery
+</span>
+
+<span>
+  ✓
+</span>
 
 </div>
 
 </div>
 
 </div>
+
+</div>
+
 </section>
 
 
@@ -781,10 +872,12 @@ TODAY'S PICKUP
 
 <div class="section-head">
 
-<h2>Everything your wardrobe needs.</h2>
+<h2>
+  Everything your wardrobe needs.
+</h2>
 
 <p>
-From everyday washing to delicate garment care, we've got your laundry covered.
+  From everyday washing to delicate garment care, we've got your laundry covered.
 </p>
 
 </div>
@@ -792,51 +885,137 @@ From everyday washing to delicate garment care, we've got your laundry covered.
 
 <div class="cards">
 
-<div class="card">
-<div class="icon">🧺</div>
-<h3>Wash & Fold</h3>
-<p>Everyday clothes washed, dried and neatly folded.</p>
-<div class="price">₹79/kg</div>
-</div>
 
 <div class="card">
-<div class="icon">👔</div>
-<h3>Wash & Iron</h3>
-<p>Freshly washed and professionally ironed, ready to wear.</p>
-<div class="price">₹109/kg</div>
+
+<div class="icon">
+  🧺
 </div>
+
+<h3>
+  Wash & Fold
+</h3>
+
+<p>
+  Everyday clothes washed, dried and neatly folded.
+</p>
+
+<div class="price">
+  ₹79/kg
+</div>
+
+</div>
+
 
 <div class="card">
-<div class="icon">✨</div>
-<h3>Dry Cleaning</h3>
-<p>Specialized care for suits, dresses, coats and delicate wear.</p>
-<div class="price">₹149/item</div>
+
+<div class="icon">
+  👔
 </div>
+
+<h3>
+  Wash & Iron
+</h3>
+
+<p>
+  Freshly washed and professionally ironed, ready to wear.
+</p>
+
+<div class="price">
+  ₹109/kg
+</div>
+
+</div>
+
 
 <div class="card">
-<div class="icon">♨️</div>
-<h3>Steam Ironing</h3>
-<p>Crisp finishing for shirts, trousers and daily wear.</p>
-<div class="price">₹15/item</div>
+
+<div class="icon">
+  ✨
 </div>
+
+<h3>
+  Dry Cleaning
+</h3>
+
+<p>
+  Specialized care for suits, dresses, coats and delicate wear.
+</p>
+
+<div class="price">
+  ₹149/item
+</div>
+
+</div>
+
 
 <div class="card">
-<div class="icon">🛏️</div>
-<h3>Household Laundry</h3>
-<p>Bedsheets, blankets, towels and other home essentials.</p>
-<div class="price">₹99/item</div>
+
+<div class="icon">
+  ♨️
 </div>
+
+<h3>
+  Steam Ironing
+</h3>
+
+<p>
+  Crisp finishing for shirts, trousers and daily wear.
+</p>
+
+<div class="price">
+  ₹15/item
+</div>
+
+</div>
+
 
 <div class="card">
-<div class="icon">👗</div>
-<h3>Delicate Care</h3>
-<p>Extra attention for silk, designer and special garments.</p>
-<div class="price">From ₹199</div>
+
+<div class="icon">
+  🛏️
+</div>
+
+<h3>
+  Household Laundry
+</h3>
+
+<p>
+  Bedsheets, blankets, towels and other home essentials.
+</p>
+
+<div class="price">
+  ₹99/item
 </div>
 
 </div>
 
+
+<div class="card">
+
+<div class="icon">
+  👗
 </div>
+
+<h3>
+  Delicate Care
+</h3>
+
+<p>
+  Extra attention for silk, designer and special garments.
+</p>
+
+<div class="price">
+  From ₹199
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
 </section>
 
 
@@ -846,106 +1025,249 @@ From everyday washing to delicate garment care, we've got your laundry covered.
 
 <div class="section-head">
 
-<h2>Laundry in four easy steps.</h2>
+<h2>
+  Laundry in four easy steps.
+</h2>
 
-<p>We make the whole process effortless.</p>
+<p>
+  We make the whole process effortless.
+</p>
 
 </div>
+
 
 <div class="step-grid">
 
-<div class="step">
-<div class="num">01</div>
-<h3>Book</h3>
-<p>Choose your service and pickup slot.</p>
-</div>
 
 <div class="step">
-<div class="num">02</div>
-<h3>We Pick Up</h3>
-<p>Our team collects clothes from your doorstep.</p>
+
+<div class="num">
+  01
 </div>
+
+<h3>
+  Book
+</h3>
+
+<p>
+  Choose your service and pickup slot.
+</p>
+
+</div>
+
 
 <div class="step">
-<div class="num">03</div>
-<h3>We Clean</h3>
-<p>Clothes are sorted, cleaned, dried and finished.</p>
+
+<div class="num">
+  02
 </div>
+
+<h3>
+  We Pick Up
+</h3>
+
+<p>
+  Our team collects clothes from your doorstep.
+</p>
+
+</div>
+
 
 <div class="step">
-<div class="num">04</div>
-<h3>We Deliver</h3>
-<p>Fresh laundry returns neatly packed and ready.</p>
+
+<div class="num">
+  03
 </div>
+
+<h3>
+  We Clean
+</h3>
+
+<p>
+  Clothes are sorted, cleaned, dried and finished.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="num">
+  04
+</div>
+
+<h3>
+  We Deliver
+</h3>
+
+<p>
+  Fresh laundry returns neatly packed and ready.
+</p>
+
+</div>
+
 
 </div>
 
 </div>
+
 </section>
 
 
-<!-- FIXED PRICING -->
 <section id="pricing">
 
 <div class="container">
 
 <div class="section-head">
 
-<h2>Simple, transparent pricing.</h2>
+<h2>
+  Simple, transparent pricing.
+</h2>
 
-<p>No complicated plans. No surprise charges.</p>
+<p>
+  No complicated plans. No surprise charges.
+</p>
 
 </div>
 
 
 <div class="price-grid">
 
-<div class="price-card">
-<span class="tag">POPULAR</span>
-<h3>Wash & Fold</h3>
-<strong>₹79</strong>
-<span class="muted"> / kg</span>
-<p class="muted">Wash • Dry • Fold</p>
-</div>
 
 <div class="price-card">
-<h3>Wash & Iron</h3>
-<strong>₹109</strong>
-<span class="muted"> / kg</span>
-<p class="muted">Wash • Dry • Iron</p>
+
+<span class="tag">
+  POPULAR
+</span>
+
+<h3>
+  Wash & Fold
+</h3>
+
+<strong>
+  ₹79
+</strong>
+
+<span class="muted">
+  / kg
+</span>
+
+<p class="muted">
+  Wash • Dry • Fold
+</p>
+
 </div>
+
 
 <div class="price-card">
-<h3>Dry Cleaning</h3>
-<strong>₹149</strong>
-<span class="muted"> / item</span>
-<p class="muted">Professional garment care</p>
+
+<h3>
+  Wash & Iron
+</h3>
+
+<strong>
+  ₹109
+</strong>
+
+<span class="muted">
+  / kg
+</span>
+
+<p class="muted">
+  Wash • Dry • Iron
+</p>
+
 </div>
+
 
 <div class="price-card">
-<h3>Steam Ironing</h3>
-<strong>₹15</strong>
-<span class="muted"> / item</span>
-<p class="muted">Crisp finishing for daily wear</p>
+
+<h3>
+  Dry Cleaning
+</h3>
+
+<strong>
+  ₹149
+</strong>
+
+<span class="muted">
+  / item
+</span>
+
+<p class="muted">
+  Professional garment care
+</p>
+
 </div>
+
 
 <div class="price-card">
-<h3>Household Laundry</h3>
-<strong>₹99</strong>
-<span class="muted"> / item</span>
-<p class="muted">Bedsheets, towels and home essentials</p>
+
+<h3>
+  Steam Ironing
+</h3>
+
+<strong>
+  ₹15
+</strong>
+
+<span class="muted">
+  / item
+</span>
+
+<p class="muted">
+  Crisp finishing for daily wear
+</p>
+
 </div>
+
 
 <div class="price-card">
-<h3>Delicate Care</h3>
-<strong>₹199</strong>
-<span class="muted"> / item</span>
-<p class="muted">Special care for delicate garments</p>
+
+<h3>
+  Household Laundry
+</h3>
+
+<strong>
+  ₹99
+</strong>
+
+<span class="muted">
+  / item
+</span>
+
+<p class="muted">
+  Bedsheets, towels and home essentials
+</p>
+
 </div>
+
+
+<div class="price-card">
+
+<h3>
+  Delicate Care
+</h3>
+
+<strong>
+  ₹199
+</strong>
+
+<span class="muted">
+  / item
+</span>
+
+<p class="muted">
+  Special care for delicate garments
+</p>
+
+</div>
+
 
 </div>
 
 </div>
+
 </section>
 
 
@@ -955,37 +1277,75 @@ From everyday washing to delicate garment care, we've got your laundry covered.
 
 <div class="section-head">
 
-<h2>We take care of your clothes.</h2>
+<h2>
+  We take care of your clothes.
+</h2>
 
 <p>
-FreshFold is a demo brand created for this website. The content, prices and contact details can be replaced with your real business information before launch.
+  FreshFold is a demo brand created for this website. The content, prices and contact details can be replaced with your real business information before launch.
 </p>
 
 </div>
 
+
 <div class="cards">
 
-<div class="card">
-<div class="icon">🧼</div>
-<h3>Quality Cleaning</h3>
-<p>Modern cleaning processes designed around fabric care.</p>
-</div>
 
 <div class="card">
-<div class="icon">🛡️</div>
-<h3>Careful Handling</h3>
-<p>Your garments are handled with attention from pickup to delivery.</p>
+
+<div class="icon">
+  🧼
 </div>
+
+<h3>
+  Quality Cleaning
+</h3>
+
+<p>
+  Modern cleaning processes designed around fabric care.
+</p>
+
+</div>
+
 
 <div class="card">
-<div class="icon">📱</div>
-<h3>Easy Booking</h3>
-<p>Schedule a pickup in minutes from any device.</p>
+
+<div class="icon">
+  🛡️
 </div>
+
+<h3>
+  Careful Handling
+</h3>
+
+<p>
+  Your garments are handled with attention from pickup to delivery.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+  📱
+</div>
+
+<h3>
+  Easy Booking
+</h3>
+
+<p>
+  Schedule a pickup in minutes from any device.
+</p>
+
+</div>
+
 
 </div>
 
 </div>
+
 </section>
 
 
@@ -995,102 +1355,179 @@ FreshFold is a demo brand created for this website. The content, prices and cont
 
 <div class="section-head">
 
-<h2>What customers are saying.</h2>
+<h2>
+  What customers are saying.
+</h2>
 
 <p>
-Demo reviews — replace with genuine customer feedback before launch.
+  Demo reviews — replace with genuine customer feedback before launch.
 </p>
 
 </div>
+
 
 <div class="cards">
 
-<div class="card review">
-<div class="stars">★★★★★</div>
-<p>
-“Super convenient. The pickup was on time and my clothes came back fresh and neatly packed.”
-</p>
-<div class="reviewer">Aarav M.</div>
-<div class="location">Baner, Pune</div>
-</div>
 
 <div class="card review">
-<div class="stars">★★★★★</div>
-<p>
-“The ironing finish is excellent. Booking the service was quick and easy.”
-</p>
-<div class="reviewer">Priya S.</div>
-<div class="location">Wakad, Pune</div>
+
+<div class="stars">
+  ★★★★★
 </div>
+
+<p>
+  “Super convenient. The pickup was on time and my clothes came back fresh and neatly packed.”
+</p>
+
+<div class="reviewer">
+  Aarav M.
+</div>
+
+<div class="location">
+  Baner, Pune
+</div>
+
+</div>
+
 
 <div class="card review">
-<div class="stars">★★★★★</div>
+
+<div class="stars">
+  ★★★★★
+</div>
+
 <p>
-“A great option when work gets busy. Doorstep service saves a lot of time.”
+  “The ironing finish is excellent. Booking the service was quick and easy.”
 </p>
-<div class="reviewer">Rahul K.</div>
-<div class="location">Kharadi, Pune</div>
+
+<div class="reviewer">
+  Priya S.
+</div>
+
+<div class="location">
+  Wakad, Pune
 </div>
 
 </div>
 
+
+<div class="card review">
+
+<div class="stars">
+  ★★★★★
 </div>
+
+<p>
+  “A great option when work gets busy. Doorstep service saves a lot of time.”
+</p>
+
+<div class="reviewer">
+  Rahul K.
+</div>
+
+<div class="location">
+  Kharadi, Pune
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
 </section>
 
 
-<!-- FAQ -->
 <section id="faq">
 
 <div class="container">
 
 <div class="section-head">
 
-<h2>Frequently asked questions.</h2>
+<h2>
+  Frequently asked questions.
+</h2>
 
-<p>Quick answers before you book.</p>
+<p>
+  Quick answers before you book.
+</p>
 
 </div>
+
 
 <div class="faq">
 
+
 <details open>
-<summary>How does doorstep pickup work?</summary>
+
+<summary>
+  How does doorstep pickup work?
+</summary>
+
 <p>
-Choose a pickup date and time, enter your address and submit the booking form. Our team will collect your clothes.
+  Choose a pickup date and time, enter your address and submit the booking form. Our team will collect your clothes.
 </p>
+
 </details>
 
-<details>
-<summary>How long does laundry take?</summary>
-<p>
-Standard demo turnaround is 24–48 hours. Actual turnaround can be configured for your business.
-</p>
-</details>
 
 <details>
-<summary>Do you offer same-day service?</summary>
+
+<summary>
+  How long does laundry take?
+</summary>
+
 <p>
-Same-day service can be enabled for selected areas and services based on your operational capacity.
+  Standard demo turnaround is 24–48 hours. Actual turnaround can be configured for your business.
 </p>
+
 </details>
 
-<details>
-<summary>How is pricing calculated?</summary>
-<p>
-Some services are priced by kilogram and others by individual item. Final production pricing can be added to the pricing page.
-</p>
-</details>
 
 <details>
-<summary>Can you handle delicate clothes?</summary>
+
+<summary>
+  Do you offer same-day service?
+</summary>
+
 <p>
-Yes. Delicate-care service can be offered with fabric-specific handling instructions.
+  Same-day service can be enabled for selected areas and services based on your operational capacity.
 </p>
+
 </details>
+
+
+<details>
+
+<summary>
+  How is pricing calculated?
+</summary>
+
+<p>
+  Some services are priced by kilogram and others by individual item. Final production pricing can be added to the pricing page.
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+  Can you handle delicate clothes?
+</summary>
+
+<p>
+  Yes. Delicate-care service can be offered with fabric-specific handling instructions.
+</p>
+
+</details>
+
 
 </div>
 
 </div>
+
 </section>
 
 
@@ -1101,31 +1538,40 @@ Yes. Delicate-care service can be offered with fabric-specific handling instruct
 <div class="cta">
 
 <div>
-<h2>Ready for laundry day?</h2>
-<p>Schedule your doorstep pickup in less than a minute.</p>
+
+<h2>
+  Ready for laundry day?
+</h2>
+
+<p>
+  Schedule your doorstep pickup in less than a minute.
+</p>
+
 </div>
 
 <a class="btn" href="#contact">
-Start Booking →
+  Start Booking →
 </a>
 
 </div>
 
 </div>
+
 </section>
 
 
-<!-- CONTACT / BOOKING -->
 <section id="contact">
 
 <div class="container">
 
 <div class="section-head">
 
-<h2>Book a pickup.</h2>
+<h2>
+  Book a pickup.
+</h2>
 
 <p>
-These are demo details. Replace them with your actual business information.
+  These are demo details. Replace them with your actual business information.
 </p>
 
 </div>
@@ -1136,26 +1582,28 @@ These are demo details. Replace them with your actual business information.
 
 <div class="contact-info">
 
-<h3>FreshFold Laundry</h3>
+<h3>
+  FreshFold Laundry
+</h3>
 
 <p>
-Professional laundry and garment care with doorstep pickup & delivery.
+  Professional laundry and garment care with doorstep pickup & delivery.
 </p>
 
 <div class="info-row">
-📞 +91 98765 43210
+  📞 +91 98765 43210
 </div>
 
 <div class="info-row">
-✉️ hello@freshfold.example
+  ✉️ hello@freshfold.example
 </div>
 
 <div class="info-row">
-📍 Pune, Maharashtra
+  📍 Pune, Maharashtra
 </div>
 
 <div class="info-row">
-🕐 Mon–Sun · 8:00 AM–9:00 PM
+  🕐 Mon–Sun · 8:00 AM–9:00 PM
 </div>
 
 </div>
@@ -1169,22 +1617,22 @@ Professional laundry and garment care with doorstep pickup & delivery.
 <div class="field" id="nameField">
 
 <label for="name">
-Full Name *
+  Full Name *
 </label>
 
 <input
-required
-id="name"
-name="name"
-type="text"
-placeholder="Your name"
-autocomplete="name"
-pattern="[A-Za-z]+(?:[ '-][A-Za-z]+)*"
-title="Please enter a valid name using letters only"
+  required
+  id="name"
+  name="name"
+  type="text"
+  placeholder="Your name"
+  autocomplete="name"
+  pattern="[A-Za-z]+(?:[ '-][A-Za-z]+)*"
+  title="Please enter a valid name using letters only"
 >
 
 <div class="validation-error">
-Please enter a valid name using letters only.
+  Please enter a valid name using letters only.
 </div>
 
 </div>
@@ -1193,24 +1641,24 @@ Please enter a valid name using letters only.
 <div class="field" id="phoneField">
 
 <label for="phone">
-Mobile Number *
+  Mobile Number *
 </label>
 
 <input
-required
-id="phone"
-name="phone"
-type="tel"
-inputmode="numeric"
-maxlength="10"
-minlength="10"
-pattern="[6-9][0-9]{9}"
-placeholder="10-digit mobile"
-title="Please enter a valid 10-digit Indian mobile number"
+  required
+  id="phone"
+  name="phone"
+  type="tel"
+  inputmode="numeric"
+  maxlength="10"
+  minlength="10"
+  pattern="[6-9][0-9]{9}"
+  placeholder="10-digit mobile"
+  title="Please enter a valid 10-digit Indian mobile number"
 >
 
 <div class="validation-error">
-Please enter a valid 10-digit Indian mobile number.
+  Please enter a valid 10-digit Indian mobile number.
 </div>
 
 </div>
@@ -1219,14 +1667,14 @@ Please enter a valid 10-digit Indian mobile number.
 <div class="field">
 
 <label for="date">
-Pickup Date *
+  Pickup Date *
 </label>
 
 <input
-required
-id="date"
-type="date"
-name="date"
+  required
+  id="date"
+  type="date"
+  name="date"
 >
 
 </div>
@@ -1235,29 +1683,29 @@ name="date"
 <div class="field">
 
 <label for="slot">
-Time Slot *
+  Time Slot *
 </label>
 
 <select required name="slot" id="slot">
 
 <option value="">
-Select slot
+  Select slot
 </option>
 
 <option>
-8 AM – 11 AM
+  8 AM – 11 AM
 </option>
 
 <option>
-11 AM – 2 PM
+  11 AM – 2 PM
 </option>
 
 <option>
-2 PM – 5 PM
+  2 PM – 5 PM
 </option>
 
 <option>
-5 PM – 8 PM
+  5 PM – 8 PM
 </option>
 
 </select>
@@ -1268,37 +1716,37 @@ Select slot
 <div class="field">
 
 <label for="service">
-Service *
+  Service *
 </label>
 
 <select required name="service" id="service">
 
 <option value="">
-Select service
+  Select service
 </option>
 
 <option>
-Wash & Fold
+  Wash & Fold
 </option>
 
 <option>
-Wash & Iron
+  Wash & Iron
 </option>
 
 <option>
-Dry Cleaning
+  Dry Cleaning
 </option>
 
 <option>
-Steam Ironing
+  Steam Ironing
 </option>
 
 <option>
-Household Laundry
+  Household Laundry
 </option>
 
 <option>
-Delicate Care
+  Delicate Care
 </option>
 
 </select>
@@ -1309,13 +1757,13 @@ Delicate Care
 <div class="field">
 
 <label for="qty">
-Approx. Quantity
+  Approx. Quantity
 </label>
 
 <input
-id="qty"
-name="qty"
-placeholder="e.g. 5 kg"
+  id="qty"
+  name="qty"
+  placeholder="e.g. 5 kg"
 >
 
 </div>
@@ -1324,14 +1772,14 @@ placeholder="e.g. 5 kg"
 <div class="field full">
 
 <label for="address">
-Pickup Address *
+  Pickup Address *
 </label>
 
 <textarea
-required
-id="address"
-name="address"
-placeholder="House / flat, street, area, landmark"
+  required
+  id="address"
+  name="address"
+  placeholder="House / flat, street, area, landmark"
 ></textarea>
 
 </div>
@@ -1340,13 +1788,13 @@ placeholder="House / flat, street, area, landmark"
 <div class="field full">
 
 <label for="notes">
-Special Instructions
+  Special Instructions
 </label>
 
 <textarea
-id="notes"
-name="notes"
-placeholder="Any garment-care instructions?"
+  id="notes"
+  name="notes"
+  placeholder="Any garment-care instructions?"
 ></textarea>
 
 </div>
@@ -1356,17 +1804,17 @@ placeholder="Any garment-care instructions?"
 
 
 <button
-type="submit"
-class="btn btn-primary"
-style="margin-top:18px;width:100%"
+  type="submit"
+  class="btn btn-primary"
+  style="margin-top:18px;width:100%"
 >
-Confirm Demo Booking
+  Confirm Demo Booking
 </button>
 
 
 <div
-class="notice"
-id="notice"
+  class="notice"
+  id="notice"
 ></div>
 
 
@@ -1390,39 +1838,41 @@ id="notice"
 <div>
 
 <div class="footer-brand">
-✦ FreshFold
+  ✦ FreshFold
 </div>
 
 <div style="font-size:13px;margin-top:7px">
-Fresh Clothes. Zero Hassle.
+  Fresh Clothes. Zero Hassle.
 </div>
 
 </div>
+
 
 <div class="footer-links">
 
 <a href="#services">
-Services
+  Services
 </a>
 
 <a href="#pricing">
-Pricing
+  Pricing
 </a>
 
 <a href="#faq">
-FAQ
+  FAQ
 </a>
 
 <a href="#contact">
-Contact
+  Contact
 </a>
 
 </div>
 
 </div>
 
+
 <div class="copyright">
-© 2026 FreshFold Laundry. Demo website — replace business data before production launch.
+  © 2026 FreshFold Laundry. Demo website — replace business data before production launch.
 </div>
 
 </div>
@@ -1432,58 +1882,153 @@ Contact
 
 <script>
 
+const menuButton = document.getElementById('menuButton');
+const mobileMenu = document.querySelector('.links');
+
+
+function closeMenu(){
+
+  mobileMenu.classList.remove('open');
+
+  menuButton.setAttribute('aria-expanded','false');
+
+  menuButton.setAttribute('aria-label','Open menu');
+
+}
+
+
 function toggleMenu(){
 
-  const n=document.querySelector('.links');
+  const isOpen = mobileMenu.classList.toggle('open');
 
-  if(n.style.display==='flex'){
+  menuButton.setAttribute(
+    'aria-expanded',
+    String(isOpen)
+  );
 
-    n.style.display='none';
+  menuButton.setAttribute(
+    'aria-label',
+    isOpen ? 'Close menu' : 'Open menu'
+  );
 
-  }else{
+}
 
-    n.style.display='flex';
-    n.style.position='absolute';
-    n.style.top='76px';
-    n.style.left='0';
-    n.style.right='0';
-    n.style.background='#fff';
-    n.style.padding='20px';
-    n.style.flexDirection='column';
-    n.style.boxShadow='0 15px 30px rgba(0,0,0,.08)';
+
+menuButton.addEventListener('click', function(event){
+
+  event.stopPropagation();
+
+  toggleMenu();
+
+});
+
+
+
+const navLinks = document.querySelectorAll('.links a');
+
+navLinks.forEach(function(link){
+
+  link.addEventListener('click', function(){
+
+    closeMenu();
+
+  });
+
+});
+
+
+/*
+  Close menu when clicking outside it.
+*/
+
+document.addEventListener('click', function(event){
+
+  if(
+    mobileMenu.classList.contains('open') &&
+    !mobileMenu.contains(event.target) &&
+    !menuButton.contains(event.target)
+  ){
+
+    closeMenu();
 
   }
 
-}
+});
 
 
-const d=document.getElementById('date');
+document.addEventListener('keydown', function(event){
+
+  if(event.key === 'Escape'){
+
+    closeMenu();
+
+  }
+
+});
+
+
+
+
+window.addEventListener('resize', function(){
+
+  if(window.innerWidth > 850){
+
+    closeMenu();
+
+  }
+
+});
+
+
+
+const d = document.getElementById('date');
+
 
 function setMinimumDate(){
 
-  const today=new Date();
+  const today = new Date();
 
-  const year=today.getFullYear();
-  const month=String(today.getMonth()+1).padStart(2,'0');
-  const day=String(today.getDate()).padStart(2,'0');
+  const year = today.getFullYear();
 
-  d.min=`${year}-${month}-${day}`;
+  const month = String(
+    today.getMonth() + 1
+  ).padStart(2,'0');
+
+  const day = String(
+    today.getDate()
+  ).padStart(2,'0');
+
+  d.min = `${year}-${month}-${day}`;
 
 }
+
 
 setMinimumDate();
 
 
-/* NAME VALIDATION */
-const nameInput=document.getElementById('name');
-const nameField=document.getElementById('nameField');
+
+const nameInput =
+  document.getElementById('name');
+
+const nameField =
+  document.getElementById('nameField');
+
 
 nameInput.addEventListener('input',function(){
 
-  /* Only letters, spaces, apostrophe and hyphen */
-  this.value=this.value.replace(/[^A-Za-z\s'-]/g,'');
+  
 
-  if(this.validity.valid && this.value.trim() !== ''){
+  this.value =
+    this.value.replace(
+      /[^A-Za-z\s'-]/g,
+      ''
+    );
+
+
+  if(
+    this.validity.valid &&
+    this.value.trim() !== ''
+  ){
 
     nameField.classList.remove('invalid');
 
@@ -1494,7 +2039,10 @@ nameInput.addEventListener('input',function(){
 
 nameInput.addEventListener('blur',function(){
 
-  if(!this.validity.valid || this.value.trim()===''){
+  if(
+    !this.validity.valid ||
+    this.value.trim() === ''
+  ){
 
     nameField.classList.add('invalid');
 
@@ -1507,14 +2055,25 @@ nameInput.addEventListener('blur',function(){
 });
 
 
-const phoneInput=document.getElementById('phone');
-const phoneField=document.getElementById('phoneField');
+ 
+const phoneInput =
+  document.getElementById('phone');
+
+const phoneField =
+  document.getElementById('phoneField');
+
 
 phoneInput.addEventListener('input',function(){
 
-  this.value=this.value.replace(/\D/g,'').slice(0,10);
+  this.value =
+    this.value
+      .replace(/\D/g,'')
+      .slice(0,10);
 
-  if(/^[6-9][0-9]{9}$/.test(this.value)){
+
+  if(
+    /^[6-9][0-9]{9}$/.test(this.value)
+  ){
 
     phoneField.classList.remove('invalid');
 
@@ -1525,7 +2084,9 @@ phoneInput.addEventListener('input',function(){
 
 phoneInput.addEventListener('blur',function(){
 
-  if(!/^[6-9][0-9]{9}$/.test(this.value)){
+  if(
+    !/^[6-9][0-9]{9}$/.test(this.value)
+  ){
 
     phoneField.classList.add('invalid');
 
@@ -1536,83 +2097,100 @@ phoneInput.addEventListener('blur',function(){
   }
 
 });
+
 
 
 document
-.getElementById('bookingForm')
-.addEventListener('submit',function(e){
+  .getElementById('bookingForm')
+  .addEventListener('submit',function(e){
 
-  e.preventDefault();
-
-
- 
-  const name=nameInput.value.trim();
-
-  const validName=/^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/.test(name);
+    e.preventDefault();
 
 
-  if(!validName){
 
-    nameField.classList.add('invalid');
-    nameInput.focus();
-    return;
+    const name =
+      nameInput.value.trim();
 
-  }else{
+    const validName =
+      /^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/.test(name);
+
+
+    if(!validName){
+
+      nameField.classList.add('invalid');
+
+      nameInput.focus();
+
+      return;
+
+    }else{
+
+      nameField.classList.remove('invalid');
+
+    }
+
+    const phone =
+      phoneInput.value.trim();
+
+    const validPhone =
+      /^[6-9][0-9]{9}$/.test(phone);
+
+
+    if(!validPhone){
+
+      phoneField.classList.add('invalid');
+
+      phoneInput.focus();
+
+      return;
+
+    }else{
+
+      phoneField.classList.remove('invalid');
+
+    }
+
+
+
+    const data =
+      new FormData(this);
+
+
+    const ref =
+      'FF-' +
+      Math.random()
+        .toString(36)
+        .slice(2,8)
+        .toUpperCase();
+
+
+    const notice =
+      document.getElementById('notice');
+
+
+    notice.style.display = 'block';
+
+
+    notice.textContent =
+      `Demo booking confirmed! Reference: ${ref}. We'll contact ${data.get('phone')} to confirm the pickup.`;
+
+
+    
+
+    this.reset();
+
+
+    setMinimumDate();
+
 
     nameField.classList.remove('invalid');
 
-  }
-
-
-  /* Validate phone */
-  const phone=phoneInput.value.trim();
-
-  const validPhone=/^[6-9][0-9]{9}$/.test(phone);
-
-
-  if(!validPhone){
-
-    phoneField.classList.add('invalid');
-    phoneInput.focus();
-    return;
-
-  }else{
-
     phoneField.classList.remove('invalid');
 
-  }
-
-
-  
-  const data=new FormData(this);
-
-  const ref=
-    'FF-' +
-    Math.random()
-    .toString(36)
-    .slice(2,8)
-    .toUpperCase();
-
-
-  const notice=document.getElementById('notice');
-
-  notice.style.display='block';
-
-  notice.textContent=
-    `Demo booking confirmed! Reference: ${ref}. We'll contact ${data.get('phone')} to confirm the pickup.`;
-
-
-  
-  this.reset();
-
-  setMinimumDate();
-
-  nameField.classList.remove('invalid');
-  phoneField.classList.remove('invalid');
-
-});
+  });
 
 </script>
 
 </body>
 </html>
+```
