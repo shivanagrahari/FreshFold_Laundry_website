@@ -37,7 +37,7 @@
     /* BUG #11 FIX */
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
+      scroll-padding-top: 76px;
     }
 
     body {
@@ -297,7 +297,7 @@
 
     section {
       padding: 82px 0;
-      scroll-margin-top: 90px;
+      scroll-margin-top: 76px;
     }
 
     .section-head {
@@ -641,6 +641,7 @@
     }
 
     /* TABLET / MOBILE */
+    
 
     @media (max-width: 850px) {
 
@@ -708,8 +709,8 @@
          ========================= */
 
       html {
-        scroll-behavior: auto;
-        scroll-padding-top: 86px;
+        scroll-behavior: smooth;
+        scroll-padding-top: 76px;
       }
 
       /* BUG #10 FIX:
@@ -741,12 +742,12 @@
 
       section {
         padding: 62px 0;
-        scroll-margin-top: 86px;
+        scroll-margin-top: 76px;
       }
 
       .hero {
         padding: 55px 0;
-        scroll-margin-top: 86px;
+        scroll-margin-top: 76px;
       }
 
       .hero h1 {
@@ -855,7 +856,7 @@
         ☰
       </button>
 
-    </div>
+    </div>o
   </header>
 
   <main id="home">
@@ -1729,6 +1730,7 @@
                   name="date"
                 >
 
+
               </div>
 
               <div class="field">
@@ -1963,7 +1965,7 @@
       const isOpen =
         mobileMenu.classList.toggle('open');
 
-      menuButton.setAttribute(
+     menuButton.setAttribute(
         'aria-expanded',
         String(isOpen)
       );
@@ -2046,8 +2048,7 @@
           const targetPosition =
             target.getBoundingClientRect().top +
             window.pageYOffset -
-            headerHeight -
-            10;
+            headerHeight;
 
 
           // Scroll to destination
