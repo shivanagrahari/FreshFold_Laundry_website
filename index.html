@@ -290,7 +290,7 @@
       text-align: right;
     }
 
-    /* =========================
+    /* ======================
        BUG #11 FIX
        SCROLL POSITION
        ========================= */
@@ -641,7 +641,6 @@
     }
 
     /* TABLET / MOBILE */
-    
 
     @media (max-width: 850px) {
 
@@ -659,6 +658,21 @@
         border-top: 1px solid var(--line);
         z-index: 100;
       }
+      /* I added this code to fix the bug */
+      .visual {
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .laundry-card {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    padding: 20px;
+    overflow: visible;
+  }
 
       .links.open {
         display: flex;
@@ -772,7 +786,7 @@
         position: relative;
         inset: auto;
         width: 100%;
-        min-height: 0;
+        min-height: auto;
         padding: 20px;
         overflow: visible;
       }
@@ -807,8 +821,10 @@
         flex-direction: column;
       }
 
-      .footer-links {
+      footer-links {
         flex-wrap: wrap;
+
+      
       }
     }
   </style>
@@ -856,7 +872,7 @@
         ☰
       </button>
 
-    </div>o
+    </div>
   </header>
 
   <main id="home">
